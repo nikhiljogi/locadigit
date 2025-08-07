@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>locadigit | Digital Solutions That Drive Growth</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4ade80;
+            --warning: #facc15;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --transition: all 0.4s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f7ff;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--gradient);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .cta-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 10rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-text {
+            flex: 1;
+            padding-right: 2rem;
+        }
+        
+        .hero-image {
+            flex: 1;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #555;
+            max-width: 90%;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(67, 97, 238, 0.1);
+            animation: float 15s linear infinite;
+            bottom: -100px;
+        }
+        
+        /* Trusted By Section */
+        .trusted {
+            background: white;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .trusted-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #777;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+        
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .client-logo {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: var(--transition);
+            max-width: 120px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .client-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        
+        .client-logo img {
+            max-height: 40px;
+            max-width: 100%;
+            width: auto;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: #777;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border-bottom: 4px solid transparent;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--primary);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: var(--gradient);
+            padding: 4rem 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Projects Section */
+        .projects {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .project-link i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+        
+        .project-link:hover {
+            color: var(--secondary);
+        }
+        
+        .project-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Careers Section */
+        .careers {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .careers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .career-card {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        .career-card:hover {
+            transform: translateY(-5px);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .career-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .career-card ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .career-card ul li {
+            padding: 0.3rem 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .career-card ul li i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+        
+        .career-apply {
+            display: inline-block;
+            margin-top: 1rem;
+            background: var(--gradient);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .career-apply:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            font-family: Georgia, serif;
+            color: rgba(67, 97, 238, 0.1);
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .client {
+            display: flex;
+            align-items: center;
+        }
+        
+        .client img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+        }
+        
+        .client-info h4 {
+            margin-bottom: 0.2rem;
+        }
+        
+        .client-info p {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .form-info {
+            background: var(--gradient);
+            color: white;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .form-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-info p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .contact-details {
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-item i {
+            font-size: 1.2rem;
+            margin-right: 15px;
+            width: 30px;
+        }
+        
+        .form-content {
+            padding: 3rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            font-size: 1rem;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-overlay {
+            background: rgba(33, 37, 41, 0.8);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 10;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-content p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-col h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Floaters */
+        .contact-floaters {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        
+        .floater {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .floater:hover {
+            transform: translateY(-5px);
+        }
+        
+        .whatsapp {
+            background: #25D366;
+        }
+        
+        .phone {
+            background: var(--primary);
+        }
+        
+        /* Video Modal */
+        .video-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .video-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .video-container {
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+        }
+        
+        .video-container iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 10px;
+        }
+        
+        .close-video {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 3rem;
+            }
+            
+            .hero p {
+                max-width: 100%;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .form-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-container iframe {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .contact-floaters {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .floater {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .video-container iframe {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .video-container iframe {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <i class="fas fa-rocket"></i>
+                locadigit
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#careers">Careers</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="cta-btn" id="quoteBtn">Get Free Quote</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="bubbles">
+            <div class="bubble" style="width: 40px; height: 40px; left: 10%; animation-delay: 0s;"></div>
+            <div class="bubble" style="width: 60px; height: 60px; left: 20%; animation-delay: 2s;"></div>
+            <div class="bubble" style="width: 30px; height: 30px; left: 30%; animation-delay: 5s;"></div>
+            <div class="bubble" style="width: 50px; height: 50px; left: 40%; animation-delay: 1s;"></div>
+            <div class="bubble" style="width: 70px; height: 70px; left: 50%; animation-delay: 3s;"></div>
+            <div class="bubble" style="width: 45px; height: 45px; left: 60%; animation-delay: 4s;"></div>
+            <div class="bubble" style="width: 35px; height: 35px; left: 70%; animation-delay: 6s;"></div>
+            <div class="bubble" style="width: 55px; height: 55px; left: 80%; animation-delay: 7s;"></div>
+            <div class="bubble" style="width: 65px; height: 65px; left: 90%; animation-delay: 8s;"></div>
+        </div>
+        
+        <div class="container hero-content">
+            <div class="hero-text fade-in">
+                <h1>Digital Solutions That Drive Growth</h1>
+                <p>Transform your online presence with custom web solutions that drive traffic, engagement, and conversions. Our team delivers exceptional results for businesses of all sizes.</p>
+                <div class="hero-btns">
+                    <button class="cta-btn">Let's Build Together</button>
+                    <button class="btn-secondary" id="demoBtn">
+                        <i class="fas fa-play-circle"></i> Watch Demo
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image fade-in">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Web Development">
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="trusted">
+        <div class="container">
+            <div class="trusted-title fade-in">Trusted By Industry Leaders</div>
+            <div class="clients-grid">
+                <div class="client-logo fade-in">
+                    <img src="https://cdn.worldvectorlogo.com/logos/google-2015.svg" alt="Google">
+                </div>
+                <div class="client-logo fade-in">
+                    <img src="https://cdn.worldvectorlogo.com/logos/microsoft.svg" alt="NI overseas">
+                </div>
+                <div class="client-logo fade-in">
+                    <img src="https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg" alt="Slack">
+                </div>
+                <div class="client-logo fade-in">
+                    <img src="https://cdn.worldvectorlogo.com/logos/spotify-1.svg" alt="Spotify">
+                </div>
+                <div class="client-logo fade-in">
+                    <img src="https://cdn.worldvectorlogo.com/logos/amazon-icon-1.svg" alt="Amazon">
+                </div>
+                <div class="client-logo fade-in">
+                    <img src="https://cdn.worldvectorlogo.com/logos/airbnb.svg" alt="Airbnb">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Our Digital Services</h2>
+                <p>We offer a comprehensive suite of digital solutions to help your business thrive online</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Website Development</h3>
+                    <p>Custom websites and applications built with the latest technologies for optimal performance and user experience.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI & ML Solutions</h3>
+                    <p>Intelligent systems that analyze data, predict trends, and automate complex business processes.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile App Development</h3>
+                    <p>Create powerful mobile applications for iOS and Android that engage users and grow your business.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce Solutions</h3>
+                    <p>Build online stores that convert visitors into customers with seamless shopping experiences.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Digital Marketing</h3>
+                    <p>SEO, PPC, and social media strategies that increase visibility and drive targeted traffic to your business.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Solutions</h3>
+                    <p>Scalable cloud infrastructure and services to enhance your business operations and data management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Our Live Projects</h2>
+                <p>Explore our successful implementations in the market</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="NI OVERSEAS">
+                    </div>
+                    <div class="project-content">
+                        <h3>NI OVERSEAS</h3>
+                        <p>Comprehensive website for a leading overseas education consultancy with student portal and application tracking.</p>
+                        <a href="http://www.nioverseas.in" target="_blank" class="project-link">
+                            Visit Website <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Underdawgs App">
+                    </div>
+                    <div class="project-content">
+                        <h3>Underdawgs App</h3>
+                        <p>Sports betting platform with real-time odds, secure transactions, and live event tracking.</p>
+                        <a href="https://apps.apple.com/in/app/underdawgs/id6746136022" target="_blank" class="project-link">
+                            Download App <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Healthcare Platform">
+                    </div>
+                    <div class="project-content">
+                        <h3>Healthcare Platform</h3>
+                        <p>AI-powered healthcare management system for hospitals with patient tracking and analytics.</p>
+                        <a href="#" class="project-link">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container stats-grid">
+            <div class="stat-item fade-in">
+                <h3>20+</h3>
+                <p>Projects Completed</p>
+            </div>
+            <div class="stat-item fade-in">
+                <h3>98%</h3>
+                <p>Client Satisfaction</p>
+            </div>
+            <div class="stat-item fade-in">
+                <h3>30+</h3>
+                <p>Happy Clients</p>
+            </div>
+            <div class="stat-item fade-in">
+                <h3>5+</h3>
+                <p>Years Experience</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section class="careers" id="careers">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Join Our Team</h2>
+                <p>We're hiring talented individuals to join our growing team</p>
+            </div>
+            
+            <div class="careers-grid">
+                <div class="career-card fade-in">
+                    <h3>Full Stack Developer</h3>
+                    <p>We're looking for experienced developers to work on cutting-edge web applications.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> 3+ years of experience</li>
+                        <li><i class="fas fa-check-circle"></i> Node.js, React, MongoDB</li>
+                        <li><i class="fas fa-check-circle"></i> REST API development</li>
+                        <li><i class="fas fa-check-circle"></i> Cloud deployment experience</li>
+                    </ul>
+                    <a href="mailto:locadigit@gmail.com" class="career-apply">Apply Now</a>
+                </div>
+                
+                <div class="career-card fade-in">
+                    <h3>Flutter Developer</h3>
+                    <p>Join our mobile team to build cross-platform applications for iOS and Android.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> 2+ years of Flutter experience</li>
+                        <li><i class="fas fa-check-circle"></i> Dart programming</li>
+                        <li><i class="fas fa-check-circle"></i> State management solutions</li>
+                        <li><i class="fas fa-check-circle"></i> API integration</li>
+                    </ul>
+                    <a href="mailto:locadigit@gmail.com" class="career-apply">Apply Now</a>
+                </div>
+                
+                <div class="career-card fade-in">
+                    <h3>AI/ML Engineer</h3>
+                    <p>Develop intelligent systems and machine learning models for various applications.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Python, TensorFlow, PyTorch</li>
+                        <li><i class="fas fa-check-circle"></i> NLP and computer vision</li>
+                        <li><i class="fas fa-check-circle"></i> Data preprocessing</li>
+                        <li><i class="fas fa-check-circle"></i> Model deployment</li>
+                    </ul>
+                    <a href="mailto:locadigit@gmail.com" class="career-apply">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Client Testimonials</h2>
+                <p>Hear what our clients say about working with us</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        <p>"locadigit transformed our outdated website into a modern, responsive platform that increased our leads by 120% in just three months!"</p>
+                    </div>
+                    <div class="client">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="SHUBHAM TIWARI">
+                        <div class="client-info">
+                            <h4>SHUBHAM TIWARI</h4>
+                            <p>Founder & CEO</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        <p>"Their SEO strategy helped us rank #1 for our main keywords. Our organic traffic grew by 300% and sales increased significantly."</p>
+                    </div>
+                    <div class="client">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Dr. Umang kadu">
+                        <div class="client-info">
+                            <h4>DR. UMANG KADU</h4>
+                            <p>CEO, NI OVERSEAS</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        <p>"The mobile app developed by locadigit has revolutionized our customer engagement. User retention increased by 45% in the first quarter."</p>
+                    </div>
+                    <div class="client">
+                        <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="sanjay balamwar">
+                        <div class="client-info">
+                            <h4>SANJAY BALAMWAR</h4>
+                            <p>SCIENTIST at MRSAC</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form" id="contact">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Get In Touch</h2>
+                <p>Have a project in mind? Contact us for a free consultation</p>
+            </div>
+            
+            <div class="form-container fade-in">
+                <div class="form-info">
+                    <h3>Let's Talk About Your Project</h3>
+                    <p>We're ready to discuss your requirements and provide a customized solution for your business.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Pune, MH</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>9960589721</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>locadigit@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>9960589721</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-content">
+                    <form id="contactForm" action="https://formspree.io/f/xjkopgpj" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" name="phone" id="phone" class="form-control" placeholder="Enter your phone number">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select name="service" id="service" class="form-control">
+                                <option value="">Select a service</option>
+                                <option value="web">Website Development</option>
+                                <option value="app">Mobile App Development</option>
+                                <option value="ai">AI/ML Solutions</option>
+                                <option value="ecommerce">E-commerce Solutions</option>
+                                <option value="marketing">Digital Marketing</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea name="message" id="message" class="form-control" placeholder="Tell us about your project" required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-overlay"></div>
+        <div class="container cta-content">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Let's discuss how we can help you achieve your digital goals and drive growth for your business.</p>
+            <button class="cta-btn">Get Started Today</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>locadigit</h3>
+                    <p>We create digital experiences that help businesses grow and thrive in the online world.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Mobile App Development</a></li>
+                        <li><a href="#">AI/ML Solutions</a></li>
+                        <li><a href="#">E-commerce Solutions</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Pune, MH</li>
+                        <li><i class="fas fa-phone"></i> 9960589721</li>
+                        <li><i class="fas fa-envelope"></i> locadigit@gmail.com</li>
+                        <li><i class="fab fa-whatsapp"></i> 9960589721</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 locadigit. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Floaters -->
+    <div class="contact-floaters">
+        <a href="https://wa.me/919960589721" target="_blank" class="floater whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+919960589721" class="floater phone">
+            <i class="fas fa-phone"></i>
+        </a>
+    </div>
+    
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-container">
+            <button class="close-video" id="closeVideo">&times;</button>
+            <iframe id="youtubeVideo" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        });
+        
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Bubble animation
+        const bubblesContainer = document.querySelector('.bubbles');
+        
+        for (let i = 0; i < 15; i++) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            
+            const size = Math.random() * 60 + 20;
+            const pos = Math.random() * 100;
+            const delay = Math.random() * 10;
+            const duration = Math.random() * 20 + 10;
+            
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            bubble.style.left = `${pos}%`;
+            bubble.style.animationDelay = `${delay}s`;
+            bubble.style.animationDuration = `${duration}s`;
+            
+            bubblesContainer.appendChild(bubble);
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Video modal functionality
+        const demoBtn = document.getElementById('demoBtn');
+        const videoModal = document.getElementById('videoModal');
+        const closeVideo = document.getElementById('closeVideo');
+        const youtubeVideo = document.getElementById('youtubeVideo');
+        
+        demoBtn.addEventListener('click', () => {
+            youtubeVideo.src = "https://www.youtube.com/embed/MO8Ywqo2TWY?autoplay=1";
+            videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeVideo.addEventListener('click', () => {
+            videoModal.classList.remove('active');
+            youtubeVideo.src = "";
+            document.body.style.overflow = 'auto';
+        });
+        
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                videoModal.classList.remove('active');
+                youtubeVideo.src = "";
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Connect Get Free Quote button to contact section
+        const quoteBtn = document.getElementById('quoteBtn');
+        quoteBtn.addEventListener('click', () => {
+            const contactSection = document.getElementById('contact');
+            window.scrollTo({
+                top: contactSection.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Form validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !email || !message) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Submit the form
+            contactForm.submit();
+            alert('Thank you for your message! We will contact you soon.');
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
