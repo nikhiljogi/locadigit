@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>locadigit | Digital Solutions That Drive Growth</title>
+    <meta name="description" content="Locadigit provides custom web solutions, AI & ML solutions, mobile app development, and digital marketing services to drive business growth.">
     <meta name="google-site-verification" content="uMEXZGxsF6RzDcBtXq4JRWFdfxnPeC19wFmvYazYs1s">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
@@ -58,6 +59,13 @@
             top: 0;
             z-index: 1000;
             padding: 1rem 0;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 0.7rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
         
         .navbar {
@@ -76,9 +84,9 @@
             align-items: center;
         }
         
-        .logo i {
+        .logo img {
+            height: 40px;
             margin-right: 10px;
-            color: var(--accent);
         }
         
         .nav-links {
@@ -133,6 +141,15 @@
         .cta-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
         }
         
         /* Hero Section */
@@ -894,6 +911,78 @@
             transform: translateY(0);
         }
         
+        /* Mobile Menu */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: white;
+            z-index: 1500;
+            padding: 2rem;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            overflow-y: auto;
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .mobile-nav-links {
+            list-style: none;
+        }
+        
+        .mobile-nav-links li {
+            margin-bottom: 1rem;
+        }
+        
+        .mobile-nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            display: block;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+        
+        .mobile-nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-nav-cta {
+            margin-top: 2rem;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1400;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
         /* Responsive */
         @media (max-width: 992px) {
             .hero-content {
@@ -932,8 +1021,12 @@
         }
         
         @media (max-width: 768px) {
-            .nav-links {
+            .nav-links, .cta-btn {
                 display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
             }
             
             .hero h1 {
@@ -977,6 +1070,22 @@
             .video-container iframe {
                 height: 200px;
             }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .form-info, .form-content {
+                padding: 2rem;
+            }
         }
     </style>
 </head>
@@ -985,7 +1094,7 @@
     <header>
         <div class="container navbar">
             <a href="#" class="logo">
-                <i class="fas fa-rocket"></i>
+                <img src="locadigit.png" alt="Locadigit Logo">
                 locadigit
             </a>
             <ul class="nav-links">
@@ -997,8 +1106,36 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="cta-btn" id="quoteBtn">Get Free Quote</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <a href="#" class="logo">
+                <img src="locadigit.png" alt="Locadigit Logo">
+                locadigit
+            </a>
+            <button class="mobile-menu-btn" id="closeMobileMenu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#home" class="mobile-nav-link">Home</a></li>
+            <li><a href="#services" class="mobile-nav-link">Services</a></li>
+            <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+            <li><a href="#careers" class="mobile-nav-link">Careers</a></li>
+            <li><a href="#testimonials" class="mobile-nav-link">Testimonials</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        </ul>
+        <div class="mobile-nav-cta">
+            <button class="cta-btn" id="mobileQuoteBtn">Get Free Quote</button>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -1037,17 +1174,16 @@
             <div class="trusted-title fade-in">Trusted By Industry Leaders</div>
             <div class="clients-grid">
                 <div class="client-logo fade-in">
-                    <img src="Google_Icons-09-512.png" alt="Google">
+                    <img src="https://cdn.worldvectorlogo.com/logos/google-2015.svg" alt="Google">
                 </div>
                 <div class="client-logo fade-in">
-                    <img src="logo.png" alt="NI overseas">
+                    <img src="https://cdn.worldvectorlogo.com/logos/microsoft.svg" alt="Microsoft">
                 </div>
                 <div class="client-logo fade-in">
                     <img src="https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg" alt="Slack">
                 </div>
-    
                 <div class="client-logo fade-in">
-                    <img src="download.png" alt="Amazon">
+                    <img src="https://cdn.worldvectorlogo.com/logos/amazon-2.svg" alt="Amazon">
                 </div>
                 <div class="client-logo fade-in">
                     <img src="https://cdn.worldvectorlogo.com/logos/airbnb.svg" alt="Airbnb">
@@ -1251,7 +1387,7 @@
                         <p>"locadigit transformed our outdated website into a modern, responsive platform that increased our leads by 120% in just three months!"</p>
                     </div>
                     <div class="client">
-                        <img src="1608643584291.jpg" alt="SHUBHAM TIWARI">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="SHUBHAM TIWARI">
                         <div class="client-info">
                             <h4>SHUBHAM TIWARI</h4>
                             <p>Founder & CEO Underdawgs</p>
@@ -1264,7 +1400,7 @@
                         <p>"Their SEO strategy helped us rank #1 for our main keywords. Our organic traffic grew by 300% and sales increased significantly."</p>
                     </div>
                     <div class="client">
-                        <img src="umang.png" alt="Dr. Umang kadu">
+                        <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Dr. Umang kadu">
                         <div class="client-info">
                             <h4>DR. UMANG KADU</h4>
                             <p>CEO, NI OVERSEAS</p>
@@ -1277,7 +1413,7 @@
                         <p>"The mobile app developed by locadigit has revolutionized our customer engagement. User retention increased by 45% in the first quarter."</p>
                     </div>
                     <div class="client">
-                        <img src="1692254314662.jpg" alt="sanjay balamwar">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="sanjay balamwar">
                         <div class="client-info">
                             <h4>SANJAY BALAMWAR</h4>
                             <p>SCIENTIST at MRSAC</p>
@@ -1304,7 +1440,7 @@
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Nagpur, MH</span>
+                            <span>Pune, MH</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
@@ -1381,11 +1517,11 @@
                 <div class="footer-col">
                     <h3>Services</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">Mobile App Development</a></li>
-                        <li><a href="#">AI/ML Solutions</a></li>
-                        <li><a href="#">E-commerce Solutions</a></li>
-                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#services">Web Development</a></li>
+                        <li><a href="#services">Mobile App Development</a></li>
+                        <li><a href="#services">AI/ML Solutions</a></li>
+                        <li><a href="#services">E-commerce Solutions</a></li>
+                        <li><a href="#services">Digital Marketing</a></li>
                     </ul>
                 </div>
                 
@@ -1403,10 +1539,10 @@
                 <div class="footer-col">
                     <h3>Contact Us</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> Nagpur,MH</li>
-                        <li><i class="fas fa-phone"></i> 7666804589</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Pune,MH</li>
+                        <li><i class="fas fa-phone"></i> 9960589721</li>
                         <li><i class="fas fa-envelope"></i> contact@locadigit.in</li>
-                        <li><i class="fab fa-whatsapp"></i> 7666804589</li>
+                        <li><i class="fab fa-whatsapp"></i> 9960589721</li>
                     </ul>
                 </div>
             </div>
@@ -1419,7 +1555,7 @@
 
     <!-- Contact Floaters -->
     <div class="contact-floaters">
-        <a href="https://wa.me/917666804589" target="_blank" class="floater whatsapp">
+        <a href="https://wa.me/919960589721" target="_blank" class="floater whatsapp">
             <i class="fab fa-whatsapp"></i>
         </a>
         <a href="tel:+917666804589" class="floater phone">
@@ -1486,6 +1622,13 @@
                         top: target.offsetTop - 80,
                         behavior: 'smooth'
                     });
+                    
+                    // Close mobile menu if open
+                    if (mobileNav.classList.contains('active')) {
+                        mobileNav.classList.remove('active');
+                        overlay.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
                 }
             });
         });
@@ -1497,7 +1640,7 @@
         const youtubeVideo = document.getElementById('youtubeVideo');
         
         demoBtn.addEventListener('click', () => {
-            youtubeVideo.src = "https://www.youtube.com/embed/EXFMbY59fMQ?autoplay";
+            youtubeVideo.src = "https://www.youtube.com/embed/EXFMbY59fMQ?autoplay=1";
             videoModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
@@ -1518,13 +1661,25 @@
         
         // Connect Get Free Quote button to contact section
         const quoteBtn = document.getElementById('quoteBtn');
-        quoteBtn.addEventListener('click', () => {
+        const mobileQuoteBtn = document.getElementById('mobileQuoteBtn');
+        
+        const scrollToContact = () => {
             const contactSection = document.getElementById('contact');
             window.scrollTo({
                 top: contactSection.offsetTop - 80,
                 behavior: 'smooth'
             });
-        });
+            
+            // Close mobile menu if open
+            if (mobileNav.classList.contains('active')) {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        };
+        
+        quoteBtn.addEventListener('click', scrollToContact);
+        mobileQuoteBtn.addEventListener('click', scrollToContact);
         
         // Contact form submission
         const contactForm = document.getElementById('contactForm');
@@ -1545,6 +1700,49 @@
             contactForm.submit();
             alert('Thank you for your message! We will contact you soon.');
             contactForm.reset();
+        });
+        
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('overlay');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMobileMenu.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        overlay.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
     </script>
 </body>
