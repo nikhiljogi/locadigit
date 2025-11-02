@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -141,6 +140,32 @@
         .cta-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        .admin-btn {
+            background: transparent;
+            color: var(--dark);
+            border: 1px solid #ddd;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-right: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .admin-btn:hover {
+            background: rgba(67, 97, 238, 0.1);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .admin-btn i {
+            margin-right: 5px;
         }
         
         .mobile-menu-btn {
@@ -1021,7 +1046,7 @@
         }
         
         @media (max-width: 768px) {
-            .nav-links, .cta-btn {
+            .nav-links, .cta-btn, .admin-btn {
                 display: none;
             }
             
@@ -1105,7 +1130,12 @@
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="cta-btn" id="quoteBtn">Get Free Quote</button>
+            <div class="nav-buttons">
+                <a href="https://mail.hostinger.com/v2/auth/login?_user=contact%40locadigit.in" target="_blank" class="admin-btn">
+                    <i class="fas fa-user-shield"></i> Admin
+                </a>
+                <button class="cta-btn" id="quoteBtn">Get Free Quote</button>
+            </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -1130,6 +1160,9 @@
             <li><a href="#careers" class="mobile-nav-link">Careers</a></li>
             <li><a href="#testimonials" class="mobile-nav-link">Testimonials</a></li>
             <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+            <li><a href="https://mail.hostinger.com/v2/auth/login?_user=contact%40locadigit.in" target="_blank" class="mobile-nav-link">
+                <i class="fas fa-user-shield"></i> Admin Login
+            </a></li>
         </ul>
         <div class="mobile-nav-cta">
             <button class="cta-btn" id="mobileQuoteBtn">Get Free Quote</button>
@@ -1533,6 +1566,7 @@
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#careers">Careers</a></li>
                         <li><a href="#contact">Contact</a></li>
+                        <li><a href="https://mail.hostinger.com/v2/auth/login?_user=contact%40locadigit.in" target="_blank">Admin Login</a></li>
                     </ul>
                 </div>
                 
